@@ -1,10 +1,9 @@
 {
   "name": "@aomi/react-antd",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "main": "index.js",
   "repository": "git@github.com:aomi-react/react-antd.git",
   "author": "sean <sean.snow@live.com>",
-  "packageManager": "pnpm@12.3.4",
   "license": "MIT",
   "scripts": {
     "clean1": "find . -path \"./node_modules\" -prune -o -name \"*.js\" -o -name \"*.js.map\" -o -name \"*.d.ts\" |xargs rm -f | echo ''",
