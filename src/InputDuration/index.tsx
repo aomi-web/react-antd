@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {InputNumber, InputNumberProps, Select, SelectProps, Space} from "antd";
-import {SpaceCompactProps} from "antd/es/space/Compact";
 import dayjs from "dayjs";
 import * as duration from 'dayjs/plugin/duration'
 
@@ -20,12 +19,12 @@ export type InputDurationProps = {
   /**
    * SpaceCompactProps 属性
    */
-  spaceCompactProps?: SpaceCompactProps
+  spaceCompactProps?: React.ComponentProps<typeof Space.Compact>
 
   /**
    * 数字输入库属性
    */
-  inputNumberProps?: InputNumberProps
+  inputNumberProps?: InputNumberProps<any>
 
   selectProps?: SelectProps
 
@@ -95,9 +94,9 @@ const transform: Record<Unit, string> = {
  * @param value
  */
 export function parse(value: string): [number, Unit] {
-  const v = dayjs.duration(value);
+  const v: any = dayjs.duration(value);
   const unit = units.find(key => {
-    return 0 != v['$d'][key];
+    return 0 != v.$d[key];
   }) ?? 'days'
 
   return [v[transform[unit]]?.(), unit]
@@ -153,7 +152,7 @@ export function InputDuration(props: InputDurationProps) {
     }
   };
 
-  function handleNumberChange(number: number) {
+  function handleNumberChange(number: number | null) {
     setNumber(number);
     triggerChange({
       number
@@ -161,7 +160,7 @@ export function InputDuration(props: InputDurationProps) {
   }
 
   function handleUnitChange(u: Unit) {
-    const newNumber = number ? dayjs.duration(number, unit)[transform[u]]() : number;
+    const newNumber = number ? (dayjs.duration(number, unit) as any)[transform[u]]() : number;
     setNumber(newNumber);
     setUnit(u)
     triggerChange({

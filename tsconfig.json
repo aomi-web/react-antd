@@ -5,7 +5,7 @@
     "sourceMap": true,
     "jsx": "react",
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "noUnusedLocals": true,

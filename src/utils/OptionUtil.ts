@@ -6,7 +6,7 @@ import {Option} from '../BaseSelect/Option';
  * @param options 转换配置选项
  * @param labelAsValue 使用label作为value，一般在autocomplete中使用
  */
-export function obj2Options(obj, {labelAsValue = false} = {}): Array<Option> {
+export function obj2Options(obj: any, {labelAsValue = false} = {}): Array<Option> {
   const result: Array<Option> = [];
   obj && Object.keys(obj).forEach(key => result.push({
     label: obj[key],
@@ -67,6 +67,6 @@ export function entity2Options<T>(entities: T | Array<T>, options: Options<T> = 
  * @param options 待查找option数组
  * @return 返回value对应的label，如果查找不到返回value
  */
-export function findLabel(value, options: Array<Option> = []) {
+export function findLabel(value: any, options: Array<Option> = []) {
   return options.find(item => item.value === value)?.label || value;
 }
